@@ -11,7 +11,7 @@ const MapPage = () => {
   const [mode, setMode] = useState( 'coordinates' );
   const [mapInstance, setMapInstance] = useState( null );
   const markerRef = useRef( null );
-
+const currentLocationRef = useRef(null);
   const handleSearchError = ( message ) => {
     setError( message );
     setTimeout( () => setError( '' ), 3000 );
@@ -26,6 +26,7 @@ const MapPage = () => {
         setLongitude={setLongitude}
         setDigipin={setDigipin}
         markerRef={markerRef}
+         currentLocationRef={currentLocationRef} 
         setError={handleSearchError}
       />
       <SearchPanel
@@ -40,8 +41,9 @@ const MapPage = () => {
         handleSearchError={handleSearchError}
         mapInstance={mapInstance}
         markerRef={markerRef}
+         currentLocationRef={currentLocationRef} 
       />
-      <Routefind />
+      {/* <Routefind /> */}
       {digipin && latitude && longitude && (
         <ResultCard
           digipin={digipin}
